@@ -1,0 +1,38 @@
+@mixin m-h-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin desktop-supported {
+    @media not all and (hover: none) {
+        @content;
+    }
+}
+
+
+// responsive
+@mixin breakpoint-xxl {
+    @media (max-width: 1399.98px) {
+        @content;
+    }
+}
+@mixin breakpoint-xl {
+    @media (max-width: 1199.98px) {
+        @content;
+    }
+}
+@mixin breakpoint-lg {
+    @media (max-width: 991.98px) {
+        @content;
+    }
+}
+@mixin breakpoint-md {
+    @media (max-width: 767.98px) {
+        @content;
+    }
+}
+@mixin breakpoint-sm {
+    @media (max-width: 575.98px) {
+        @content;
+    }
+}
