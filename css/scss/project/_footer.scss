@@ -1,0 +1,29 @@
+.footer {
+    font-size: $body - .2rem;
+    line-height: 1.4;
+    text-align: center;
+    color: $support-dark-1;
+
+    
+    &-container {
+        border-top: 1px solid $support-light-3;
+        padding: calc(5rem - 2rem) 0;
+    }
+    p, a {
+        display: inline-block;
+    }
+    a {
+        padding: 2rem 0;
+        color: $support-dark-3;
+        transition: color 200ms ease-in-out;
+
+        @include desktop-supported {
+            &:hover {
+                color: $primary;
+            }
+        }
+        &:active {
+            color: $primary;
+        }
+    }
+}

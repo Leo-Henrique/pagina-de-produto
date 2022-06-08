@@ -1,8 +1,33 @@
 // Tipografia
 $font-size-root: 62.5%;
+$h1: 5.2rem;
+$h2: 3.2rem;
+$body: 1.6rem;
+$body-sm: 1.4rem;
 
 
 // Cores
+$primary-light-1: #ffede0;
+$primary: #ff7d1a;
+
+$support-light-1: #ffffff;
+$support-light-2: #f7f8fd;
+$support-light-3: #b6bcc8;
+
+$support-dark-1: #68707d;
+$support-dark-2: #1d2025;
+$support-dark-3: #000000; // (with 75% opacity for lightbox background)
 
 
 // Projeto
+
+
+// Sombras
+$shadow-cart: 0 8px 20px rgba(0,0,0,0.25); 
+// $shadow-8dp: 
+// 0 8px 10px 1px rgba(0,0,0,0.14),
+// 0 3px 14px 3px rgba(0,0,0,0.12),
+// 0 4px 5px 0 rgba(0,0,0,0.20);
+
+// z-index
+$zIndex-cart: 10;

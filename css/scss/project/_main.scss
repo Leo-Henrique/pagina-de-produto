@@ -1,0 +1,181 @@
+.product {
+    padding: 9rem 0;
+
+    &-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        column-gap: 13rem;
+    }
+}
+
+.product-img {
+    flex: 1;
+
+    &-current {
+        margin-bottom: 3rem;
+
+        img {
+            border-radius: 20px;
+        }
+    }
+    &-nav ul {
+        display: flex;
+        column-gap: 3rem;
+        
+        button {
+            cursor: pointer;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 0 0 transparent;
+            transition: box-shadow 200ms ease-in-out;
+    
+            @include desktop-supported {
+                &:hover img {
+                    opacity: 0.6;
+                }
+            }
+            &:active img {
+                opacity: 0.6;
+            }
+            img {
+                transition: opacity 200ms ease-in-out;
+            }
+        }
+        button.active {
+            cursor: default;
+            box-shadow: 0 0 0 2px $primary;
+            &:hover img {
+                opacity: 1;
+            }
+        }
+    }
+}
+.product-texts {
+    flex: 1;
+
+    &-intro {
+        margin-bottom: 4rem;
+
+        span {
+            display: inline-block;
+            color: $primary;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            @include font-size($h1);
+            line-height: 1.1;
+            font-weight: 700;
+            color: $support-dark-2;
+            margin-bottom: 4rem;
+        }
+        p {
+            color: $support-dark-1;
+        }
+    }
+    &-price {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        column-gap: 2rem;
+        margin-bottom: 4rem;
+
+        ins {
+            @include font-size($h2);
+            font-weight: 700;
+            white-space: nowrap;
+            text-decoration: none;
+            color: $support-dark-2;
+        }
+        abbr {
+            display: inline-block;
+            background-color: $primary-light-1;
+            border-radius: 5px;
+            color: $primary;
+            font-weight: 700;
+            text-align: center;
+            padding: 2px 8px;
+        }
+        del {
+            flex: 1 100%;
+            color: $support-light-3;
+            font-weight: 700;
+            display: block;
+        }
+    }
+    &-cart {
+        display: flex;
+        justify-content: space-between;
+        column-gap: 1.5rem;
+
+        .units {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 1.2rem 1rem;
+            background-color: $support-light-2;
+            border-radius: 10px;
+
+            button {
+                padding: 1.5rem;
+                cursor: pointer;
+                transition: opacity 200ms ease-in-out;
+
+                @include desktop-supported {
+                    &:hover {
+                        opacity: 0.7;
+                    }
+                }
+                &:active {
+                    opacity: 0.7;
+                }
+            }
+            input {
+                outline: none;
+                border: none;
+                background: none;
+                text-align: center;
+                color: $support-dark-3;
+                font-weight: 700;
+                -moz-appearance: textfield;
+            }
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                display: none;
+                -webkit-appearance: none;
+                margin: 0; 
+            }
+        }
+        .btn {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            column-gap: 1.5rem;
+            background-color: $primary;
+            border-radius: 10px;
+            color: $support-light-1;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 1.2rem 4rem;
+            cursor: pointer;
+            transition: background-color 200ms ease-in-out;
+
+            path {
+                fill: $support-light-1;
+            }
+            @include desktop-supported {
+                &:hover {
+                    background-color: rgba(255, 125, 26, 0.6);
+                }
+            }
+            &:active {
+                background-color: rgba(255, 125, 26, 0.6);
+            }
+        }
+    }
+}
