@@ -1,3 +1,6 @@
+.header {
+    padding: 0 15px;
+}
 .header-container {
     display: flex;
     align-items: center;
@@ -8,6 +11,20 @@
 
 .header-btn-mobile {
     display: none;
+    padding: 1.5rem;
+    cursor: pointer;
+
+    path {
+        transition: fill 200ms ease-in-out;
+    }
+    @include desktop-supported {
+        &:hover path {
+            fill: $support-light-3;
+        }
+    }
+    &:active path {
+        fill: $support-light-3;
+    }
 }
 
 .header-logo {
@@ -71,65 +88,57 @@
     align-items: center;
     justify-content: flex-end;
     column-gap: 4.5rem;
+    position: relative;
 
-    .cart {
-        position: relative;
+    .cart .cart-btn {
+        cursor: pointer;
+        padding: 1.5rem;
 
-        .cart-btn {
-            cursor: pointer;
-            padding: 1.5rem;
-    
-            path {
-                fill: $support-dark-1;
-                transition: fill 200ms ease-in-out;
-            }
-            @include desktop-supported {
-                &:hover path {
-                    fill: $support-dark-3;
-                }
+        path {
+            fill: $support-dark-1;
+            transition: fill 200ms ease-in-out;
+        }
+        @include desktop-supported {
+            &:hover path {
+                fill: $support-dark-3;
             }
         }
-        .cart-info {
-            display: none;
-            $cartBtn-width: 52px;
-            $cartInfo-width: 300px;
-            $cartBtn-half: $cartBtn-width / 2; 
-            $cartInfo-half: -$cartInfo-width / 2; 
+    }
+    .cart .cart-info {
+        display: none;
+        position: absolute;
+        min-width: 360px;
+        right: 0;
+        z-index: $zIndex-cart;
+        padding: 2rem 0;
+        background-color: $support-light-1;
+        box-shadow: $shadow-cart;
+        border-radius: 10px;
 
-            position: absolute;
-            min-width: $cartInfo-width;
-            left: $cartBtn-half + $cartInfo-half;
-            z-index: $zIndex-cart;
-            padding: 3rem 0;
-            background-color: $support-light-1;
-            box-shadow: $shadow-cart;
-            border-radius: 10px;
-    
-            .cart-header,
-            .cart-content {
-                padding-left: 2rem;
-                padding-right: 2rem;
-            }
-            .cart-header {
-                padding-bottom: 2rem;
-                margin-bottom: 2rem;
-                border-bottom: 1px solid $support-light-3;
+        .cart-header,
+        .cart-content {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        .cart-header {
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid $support-light-3;
 
-                p {
-                    color: $support-dark-3;
-                    font-weight: 700;
-                }
+            p {
+                color: $support-dark-3;
+                font-weight: 700;
             }
-            .cart-content {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                p {
-                    color: $support-dark-1;
-                    text-align: center;
-                    font-weight: 700;
-                    padding: 4rem 0;
-                }
+        }
+        .cart-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            p {
+                color: $support-dark-1;
+                text-align: center;
+                font-weight: 700;
+                padding: 5rem 0;
             }
         }
     }
@@ -149,6 +158,127 @@
         }
         &:active {
             box-shadow: 0 0 0 2px $primary;
+        }
+    }
+}
+.scrollbar {
+    overflow: hidden;
+}
+
+@include breakpoint-xxl {
+}
+
+@include breakpoint-lg {
+    .header {
+        padding: 0;
+    }
+    .header-container {
+        padding: 2rem 0;
+        border-bottom: none;
+    }
+    .header-btn-mobile {
+        display: block;
+
+        &.close {
+            padding: 2.5rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: $zIndex-btnMobile;
+        }
+    }
+    .header-logo {
+        padding: 1.5rem;
+    }
+    .header-menu {
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        min-width: 100vw;
+        min-height: 100vh;
+        z-index: $zIndex-menuMobile;
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, 0.7);
+
+        ul {
+            max-width: 300px;
+            min-height: 100vh;
+            flex-direction: column;
+            margin-left: 0;
+            margin-right: 0;
+            background-color: $support-light-1;
+            padding-top: 8rem;
+
+            .menu-item {
+                padding: 0;
+        
+                &::after {
+                    display: none;
+                }
+                &:hover a {
+                    color: currentColor;
+                }
+                &:active a {
+                    color: currentColor;
+                }
+            }
+            .menu-item a {
+                display: block;
+                padding: calc(2.5rem / 2) 0;
+                padding-left: 2.5rem;
+                color: $support-dark-3;
+                font-weight: 700;
+                transition: color 200ms ease-in-out;
+
+                &:active {
+                    color: $support-light-3;
+                }
+            }
+        }
+    }
+    .header-user {
+        column-gap: 3rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@include breakpoint-sm {
+    .header-btn-mobile {
+        padding-right: 1rem;
+    }   
+    .header-logo {
+        padding-left: 1rem;
+        padding-right: 1rem;
+
+        svg {
+            width: 105px;
+        }
+    }
+    .header-user {
+        column-gap: 1.5rem;
+        position: initial;
+
+        .cart .cart-btn {
+            padding-left: 1.0rem;
+            padding-right: 1.0rem;
+        }
+        .cart .cart-info {
+            position: absolute;
+            top: calc(9rem + 15px);
+            left: 0;
+            right: 0;
+            margin: 0 1.5rem;
+    
+            .cart-content p {
+                padding: 6.5rem 0;
+            }
+        }
+        .avatar {
+            width: 40px;
+            height: 40px;
         }
     }
 }

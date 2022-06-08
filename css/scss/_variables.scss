@@ -24,10 +24,10 @@ $support-dark-3: #000000; // (with 75% opacity for lightbox background)
 
 // Sombras
 $shadow-cart: 0 8px 20px rgba(0,0,0,0.25); 
-// $shadow-8dp: 
-// 0 8px 10px 1px rgba(0,0,0,0.14),
-// 0 3px 14px 3px rgba(0,0,0,0.12),
-// 0 4px 5px 0 rgba(0,0,0,0.20);
+
 
 // z-index
-$zIndex-cart: 10;
+$zIndex-arrowsImage: 10;
+$zIndex-cart: 20;
+$zIndex-menuMobile: 30;
+$zIndex-btnMobile: 40

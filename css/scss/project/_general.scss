@@ -29,21 +29,22 @@ main > .container {
         max-width: 1140px  - $difference;
     }
     @include breakpoint-xl {
-        max-width: 960px  - $difference;
+        max-width: 960px  - $difference / 2;
     }
     @include breakpoint-lg {
-        max-width: 720px  - $difference;
-    }
-    @include breakpoint-md {
-        max-width: 540px  - $difference;
-    }
-    @include breakpoint-sm {
         max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
 body {
     font-family: 'Kumbh Sans', sans-serif;
     font-size: $body;
-    line-height: 1.5;
+    line-height: 1.7;
+
+    @include breakpoint-sm {
+        font-size: $body-sm;
+        line-height: 1.5;
+    }
 }
