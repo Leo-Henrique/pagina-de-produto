@@ -153,12 +153,19 @@
         column-gap: 1.5rem;
 
         .units {
+            position: relative;
             flex: 1;
             display: flex;
+            justify-content: center;
             align-items: center;
             padding: 1.2rem 1rem;
             background-color: $support-light-2;
             border-radius: 10px;
+            transition: box-shadow 300ms ease-in-out;
+
+            &.warning {
+                box-shadow: 0 0 0 3px #DC3545;
+            }
 
             button {
                 padding: 1.5rem;
@@ -183,11 +190,47 @@
                 font-weight: 700;
                 -moz-appearance: textfield;
             }
+            
             input::-webkit-outer-spin-button,
             input::-webkit-inner-spin-button {
                 display: none;
                 -webkit-appearance: none;
                 margin: 0; 
+            }
+            .error {
+                position: absolute; 
+                top: calc(100% + 12px);
+                width: 320px;
+                color: $support-dark-1;
+                line-height: 1.4;
+                background-color: $support-light-1;
+                box-shadow: $shadow-cart;
+                border-radius: 10px;
+                border-top: 8px solid #DC3545;
+                padding: 1.8rem 3rem;
+                display: none;
+                justify-content: center;
+                opacity: 0;
+                transform: translate3D(0, -10px, 0);
+                transition-property: opacity, transform;
+                transition-duration: 300ms;
+                transition-timing-function: ease-in-out;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    bottom: 100%;
+                    border-width: 15px;
+                    border-style: solid;
+                    border-color: transparent transparent #DC3545 transparent;
+                }
+            }
+            .error.display {
+                display: flex;
+            }
+            .error.show {
+                opacity: 1;
+                transform: none;
             }
         }
         .btn {
@@ -317,7 +360,6 @@
                 flex: 1 0 61px;
             }
             .units {
-                justify-content: center;
                 padding: calc(2rem - 1.5rem) 2rem;
 
                 button, 

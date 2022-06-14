@@ -39,11 +39,10 @@ export default function menuMobile() {
     btn.addEventListener("click", () => {
         const btnWidth = btn.offsetWidth;
 
-        if (btn.ariaExpanded == "false") {
+        if (btn.ariaExpanded == "false") 
             openMenu(btnWidth);
-        } else {
+        else 
             closeMenu();
-        }
     });
 }
 menuMobile();
