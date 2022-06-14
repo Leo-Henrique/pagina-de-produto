@@ -47,27 +47,54 @@ export default function cart() {
         const cartContent = btnCart.nextElementSibling.querySelector(".cart-content");
         const btnCleanCart = cartContent.querySelector(".delete");
 
-        function addCart() {
-            const value = unity.value;
+        function addCart(productTitle, productPrice, productUnity, setInfoCustom) {
             const cartTitle = cartContent.querySelector(".texts .title");
             const cartPrice = cartContent.querySelector(".texts .price-and-unity");
             const cartTotal = cartContent.querySelector(".texts .price-total");
-            const productTitle = document.querySelector(".product-texts-intro h1").innerText;
-            const productPrice = document.querySelector(".product-texts-price ins").innerText;
-            const productPriceValue = +productPrice.slice(2).trim().replace(",", ".");
-    
+            
             function setInfo() {
                 btnCart.style.setProperty("--unitsInCartDisplay", "flex");
-                btnCart.style.setProperty("--unitsInCartValue", `"${value}"`);
-                setTimeout(() => {
-                    btnCart.classList.add("added");
-                    }, 20);
-                setTimeout(() => {
-                btnCart.classList.remove("added");
-                }, 200);
+                btnCart.style.setProperty("--unitsInCartValue", `"${productUnity}"`);
                 cartContent.classList.remove("empty");
                 cartContent.classList.add("stocked");
                 cartTitle.innerText = productTitle;
+                setInfoCustom();
+            }
+
+            if (productUnity == 1) {
+                setInfo();
+
+                cartPrice.classList.add("single");
+                cartTotal.classList.add("annulled");
+                cartPrice.innerText = productPrice;
+            } else if (productUnity >= 2) {
+                const productPriceNumber = +productPrice.slice(2).trim().replace(",", ".");
+
+                setInfo();
+
+                cartPrice.classList.remove("single");
+                cartTotal.classList.remove("annulled");
+                cartPrice.innerText = `${productPrice} x ${productUnity}`;
+                cartTotal.innerText = (productPriceNumber * productUnity).toLocaleString("pt-BR", {style: "currency", currency: "BRL"});
+            }
+        }
+        function addCartStatic() {
+            const productTitle = document.querySelector(".product-texts-intro h1").innerText;
+            const productPrice = document.querySelector(".product-texts-price ins").innerText;
+            const productUnity = unity.value;
+            const setInfoCustom = () => {
+                localStorage["product"] = productTitle;
+                localStorage["price"] = productPrice;
+                localStorage["unity"] = productUnity;
+
+                setTimeout(() => {
+                    btnCart.classList.add("added");
+                }, 20);
+
+                setTimeout(() => {
+                btnCart.classList.remove("added");
+                }, 200);
+
                 window.scrollTo({
                     top: document.querySelector("header"),
                     behavior: "smooth"
@@ -75,30 +102,29 @@ export default function cart() {
     
                 closeError();
             }
+            addCart(productTitle, productPrice, productUnity, setInfoCustom);
     
-            if (unity.value == 0) {
+            if (productUnity == 0) {
                 openError();
-            } else if (unity.value == 1) {
-                setInfo();
-    
-                cartPrice.classList.add("single");
-                cartTotal.classList.add("annulled");
-                cartPrice.innerText = productPrice;
-            } else {
-                setInfo();
-    
-                cartPrice.classList.remove("single");
-                cartTotal.classList.remove("annulled");
-                cartPrice.innerText = `${productPrice} x ${value}`;
-                cartTotal.innerText = (productPriceValue * value).toLocaleString("pt-BR", {style: "currency", currency: "BRL"});
-            }
+            } 
         }
-        btnAddToCart.addEventListener("click", addCart);
+        function addCartStorage() {
+            const productTitle = localStorage["product"];
+            const productPrice = localStorage["price"];
+            const productUnity = localStorage["unity"];
+            const setInfoCustom = () => {
+                unity.value = localStorage["unity"];
+            }
+            addCart(productTitle, productPrice, productUnity, setInfoCustom);
+        }
+        btnAddToCart.addEventListener("click", addCartStatic);
+        addCartStorage();
     
         function cleanCart() {
             btnCart.style.setProperty("--unitsInCartDisplay", "none");
             cartContent.classList.add("empty");
             cartContent.classList.remove("stocked");
+            localStorage.clear();
         }
         btnCleanCart.addEventListener("click", cleanCart);
     }
@@ -134,5 +160,4 @@ export default function cart() {
         }
     }
 }
-
 cart();
