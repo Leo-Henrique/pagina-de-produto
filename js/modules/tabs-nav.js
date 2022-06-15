@@ -3,7 +3,7 @@ export default function tabsNav() {
     const imgCurrent = document.querySelector(".product-img-current img");
 
     btns.forEach((btn, index, array) => {
-        function handleClick() {
+        function handleChange() {
             if (!imgCurrent.hasAttribute("data-transition") && !btn.classList.contains("active")) {
                 imgCurrent.setAttribute("data-transition", "")
                 imgCurrent.classList.add("change");
@@ -23,7 +23,7 @@ export default function tabsNav() {
                 }, 600);
             }
         }
-        btn.addEventListener("click", handleClick);
+        btn.addEventListener("click", handleChange);
     });
 }
 tabsNav();

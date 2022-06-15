@@ -157,7 +157,7 @@ export function cart() {
             }, 20);
             setTimeout(() => {
                 errorMsg.removeAttribute("data-transition", "");
-                clickOutside(errorMsg, closeError);
+                clickOutside([errorMsg], closeError);
             }, 300)
         }
     }

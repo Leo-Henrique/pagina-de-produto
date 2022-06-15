@@ -18,7 +18,7 @@ export default function menuMobile() {
         setTimeout(() => {
             menu.classList.add("show");
             btn.classList.add("show");
-            clickOutside(menu.firstElementChild, closeMenu);
+            clickOutside([menu.firstElementChild], closeMenu);
         }, 20);
     }
     function closeMenu() {

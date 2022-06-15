@@ -28,13 +28,13 @@ export function openCart() {
         }, 20)
         setTimeout(() => {
             btn.removeAttribute("data-transition", "");
-            clickOutside(cart, closeCart);
+            clickOutside([cart, btnMinus, unity, btnPlus], closeCart);
             document.addEventListener("keydown", closeCartKey);
         }, 300)
     }
 }
 
-export function closeCart() {
+function closeCart() {
     if (!btn.hasAttribute("data-transition")) {
 
         btn.setAttribute("data-transition", "");
