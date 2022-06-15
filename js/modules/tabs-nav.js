@@ -12,10 +12,11 @@ export default function tabsNav() {
                 btn.classList.add("active");
     
                 setTimeout(() => {
-                    const numberImage = index + 1;
-                    const imgSrc = imgCurrent.getAttribute("src");
+                    const numberImage = ++index;
+                    const imgSrc = imgCurrent.dataset.src;
+                    const changeSrc = imgSrc.replace("number", numberImage);
     
-                    imgCurrent.setAttribute("src", `${imgSrc.slice(0, imgSrc.length - 5)}${numberImage}.jpg`);
+                    imgCurrent.setAttribute("src", changeSrc);
                     imgCurrent.classList.remove("change");
                 }, 300)
                 setTimeout(() => {
