@@ -12,9 +12,9 @@ export default function tabsNav() {
                 btn.classList.add("active");
     
                 setTimeout(() => {
-                    const numberImage = index + 1;
+                    const imgNumber = index + 1;
                     const imgSrc = imgCurrent.dataset.src;
-                    const changeSrc = imgSrc.replace("number", numberImage);
+                    const changeSrc = imgSrc.replace("number", imgNumber);
 
                     imgCurrent.setAttribute("src", changeSrc);
                     imgCurrent.classList.remove("change");

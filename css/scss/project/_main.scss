@@ -66,6 +66,9 @@
             opacity: 0;
             transform: translate3D(-15px, 0, 0);
         }
+        img.change-arrows {
+            opacity: 0;
+        }
     }
     &-nav ul {
         display: flex;
@@ -419,6 +422,11 @@
 
             input {
                 padding: 1.5rem 3rem;
+            }
+            .error {
+                width: 100%;
+                left: 0;
+                padding: 1.2rem 2rem;
             }
         }
         &-cart .btn {
