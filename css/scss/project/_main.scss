@@ -56,6 +56,15 @@
         }
         img {
             border-radius: 20px;
+            transition-property: opacity, transform;
+            transition-duration: 300ms;
+            transition-timing-function: ease-in-out;
+            opacity: 1;
+            transform: none;
+        }
+        img.change {
+            opacity: 0;
+            transform: translate3D(-15px, 0, 0);
         }
     }
     &-nav ul {

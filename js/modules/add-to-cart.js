@@ -1,13 +1,14 @@
 import clickOutside from "./click-outside.js";
+import {openCart} from "./dropdown.js"
 
-export default function cart() {
-    const unity = document.getElementById("unity");
+export const btnMinus = document.getElementById("btnMinus");
+export const unity = document.getElementById("unity");
+export const btnPlus = document.getElementById("btnPlus");
+export function cart() {
     const errorMsg = btnPlus.nextElementSibling;
     const elementWarning = errorMsg.parentElement;
 
     function handleUnity() {
-        const btnMinus = document.getElementById("btnMinus");
-        const btnPlus = document.getElementById("btnPlus");
         const minValue = +unity.getAttribute("min");
         const maxValue = +unity.getAttribute("max");
 
@@ -101,6 +102,7 @@ export default function cart() {
                 });
     
                 closeError();
+                openCart();
             }
             addCart(productTitle, productPrice, productUnity, setInfoCustom);
     
@@ -161,3 +163,12 @@ export default function cart() {
     }
 }
 cart();
+
+function checkout() {
+    const btn = document.querySelector(".checkout");
+
+    btn.addEventListener("click", () => {
+        window.alert("Este botão é apenas demonstrativo!");
+    });
+}
+checkout();
