@@ -1,6 +1,7 @@
 export default function tabsNav() {
-    const btns = Array.from(document.querySelectorAll(".product-img-nav button"));
-    const imgCurrent = document.querySelector(".product-img-current img");
+    const elementActive = document.querySelector("[data-imgActive]");
+    const btns = Array.from(elementActive.querySelectorAll(".product-img-nav button"));
+    const imgCurrent = elementActive.querySelector(".product-img-current img");
 
     btns.forEach((btn, index, array) => {
         function handleChange() {
@@ -16,6 +17,7 @@ export default function tabsNav() {
                     const imgSrc = imgCurrent.dataset.src;
                     const changeSrc = imgSrc.replace("number", imgNumber);
 
+                    imgCurrent.setAttribute("data-current", imgNumber);
                     imgCurrent.setAttribute("src", changeSrc);
                     imgCurrent.classList.remove("change");
                 }, 300)

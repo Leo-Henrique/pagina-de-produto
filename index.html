@@ -179,7 +179,8 @@
 
     <main class="product">
         <div class="container product-container">
-            <div class="product-img">
+            <div class="product-img"
+            data-imgActive>
                 <div class="product-img-current">
                     <div class="arrows prev">
                         <button type="button"
@@ -190,10 +191,14 @@
                         </button>
                     </div>
 
-                    <img src="images/image-product-1.jpg" 
-                    alt="Foto do tênis"
-                    data-src="images/image-product-number.jpg"
-                    data-current="1" />
+                    <button class="btn-img-current"
+                    type="button"
+                    data-modalOpen="modalLightBox">
+                        <img src="images/image-product-1.jpg" 
+                        alt="Foto do tênis"
+                        data-src="images/image-product-number.jpg"
+                        data-current="1" />
+                    </button>
 
                     <div class="arrows next">
                         <button type="button"
@@ -351,6 +356,25 @@
             </p>
         </div>
     </footer>
+
+    <div class="modal"
+    id="modalLightBox"
+    aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <button type="button"
+                aria-label="Fechar janela"
+                data-modalClose>
+                    <svg width="20" height="20" viewBox="0 0 15 15"
+                    xmlns="http://www.w3.org/2000/svg">
+                        <path d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z" fill="#69707D" fill-rule="evenodd"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="modal-body"></div>
+        </div>
+    </div>
 
     <script type="module"
     src="js/script.js"></script>

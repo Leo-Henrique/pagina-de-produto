@@ -1,12 +1,14 @@
 export default function imageArrows() {
-    const prev = document.querySelector(".product-img-current .prev button");
-    const next = document.querySelector(".product-img-current .next button");
-    const imgCurrent = document.querySelector(".product-img-current img");
+    const elementActive = document.querySelector("[data-imgActive]");
+    const prev = elementActive.querySelector(".product-img-current .prev button");
+    const next = elementActive.querySelector(".product-img-current .next button");
+    const imgCurrent = elementActive.querySelector(".product-img-current img");
 
     function handleChange(condition, exprTrue, exprFalse) {
         if (!imgCurrent.hasAttribute("data-transition")) {
             const imgSrc = imgCurrent.dataset.src;
             const changeSrc = (change) => imgSrc.replace("number", change);
+            const navBtns = elementActive.querySelectorAll(".product-img-nav button");
     
             function setChange(change) {
                 imgCurrent.setAttribute("data-transition", "");
@@ -14,10 +16,19 @@ export default function imageArrows() {
                 setTimeout(() => {
                     imgCurrent.setAttribute("src", changeSrc(change));
                     imgCurrent.setAttribute("data-current", change);
+
+                    navBtns.forEach((btn, index) => {
+                        btn.classList.remove("active");
+                        if (index + 1 === change) {
+                            btn.classList.add("active");
+                        }
+                    });
     
                     imgCurrent.classList.remove("change-arrows");
-                    imgCurrent.removeAttribute("data-transition", "");
                 }, 300);
+                setTimeout(() => {
+                    imgCurrent.removeAttribute("data-transition", "");
+                }, 600)
             }
     
             condition ? setChange(exprTrue) : setChange(exprFalse);
@@ -27,7 +38,7 @@ export default function imageArrows() {
     [next, prev].forEach((btn) => {
         function handleArrows() {
             const imgNumber = +imgCurrent.dataset.current;
-            const totalImages = document.querySelectorAll(".product-img-nav button").length;
+            const totalImages = elementActive.querySelectorAll(".product-img-nav button").length;
             const parent = btn.parentElement;
 
             if (parent.classList.contains("prev")) {
