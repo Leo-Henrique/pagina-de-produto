@@ -26,16 +26,17 @@ export default function modal() {
 
             imageArrows();
             tabsNav();
+            responsiveDialog();
             
             setTimeout(() => {
                 modal.classList.add("show");
+                responsiveDialog();
                 window.addEventListener("resize", responsiveDialog);
             }, 20);
             setTimeout(() => {
                 modal.removeAttribute("data-transition", "");
                 clickOutside([modalBody.parentElement], closeModal);
                 document.addEventListener("keydown", closeModalKey);
-                
             }, 300);
         }
     }
@@ -69,15 +70,67 @@ export default function modal() {
     }
 
     function responsiveDialog() {
-        const header = modal.querySelector(".modal-header");
-        const nav = modal.querySelector(".product-img-nav");
-        const headerHeight = header.offsetHeight + "px";
-        const navHeight = nav.offsetHeight + "px";
-        const productImgCurrent = modal.querySelector(".product-img-current")
+        const elements = {
+            dialog: modal.querySelector(".modal-dialog"),
+            header: modal.querySelector(".modal-header"),
+            img: modal.querySelector(".product-img-current"),
+            nav: modal.querySelector(".product-img-nav"),
+            hasNav: function(exprTrue, exprFalse) {
+                if (!(getComputedStyle(this.nav).display === "none")) 
+                    return exprTrue();
+                else 
+                    return exprFalse();
+            },
+        }
+        const heights = {
+            format: (element) => {
+                return +(+getComputedStyle(element).height.replace("px", "")).toFixed(2);
+            },
+            get header() {return this.format(elements.header)},
+            get img() {return this.format(elements.img)} ,
+            get nav() {return this.format(elements.nav)},
+            get modal() {
+                const height = this.format(modal);
+                const paddingY = +getComputedStyle(modal).paddingTop.replace("px", "") * 2;
 
-        productImgCurrent.style.height = `calc(100% - ${headerHeight} - ${navHeight})`;
-        productImgCurrent.style.marginTop = headerHeight;
-        console.log(navHeight)
+                return height - paddingY;
+            },
+            max: {
+                format: (element) => {
+                    return +getComputedStyle(element).maxHeight.replace("px", "");
+                },
+                get header() {return this.format(elements.header);},
+                get img() {return this.format(elements.img);},
+                get nav() {return this.format(elements.nav);},
+                get total() {
+                    const exprTrue = () => this.header + this.img + this.nav;
+                    const exprFalse = () => this.img;
+
+                    return elements.hasNav(exprTrue, exprFalse);
+                }
+            },
+        }
+
+        function marginImg() {
+            const exprTrue = () => heights.header + "px";
+            const exprFalse = () => "initial";
+
+            elements.img.style.marginTop = elements.hasNav(exprTrue, exprFalse);
+        }
+        marginImg();
+
+
+        if (heights.modal <= heights.max.total) {
+            const exprTrue = () => `calc(100% - ${heights.header}px - ${heights.nav}px)`;
+            const exprFalse = () => "100%";
+
+            elements.img.style.height = elements.hasNav(exprTrue, exprFalse);
+            elements.img.style.height = elements.hasNav(exprTrue, exprFalse);
+            elements.dialog.classList.remove("centralize");
+        } else {
+            elements.img.style.height = "initial";
+            elements.dialog.classList.add("centralize");
+        }
     }
 }
 modal();
