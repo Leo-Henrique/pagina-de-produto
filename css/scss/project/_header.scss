@@ -293,8 +293,11 @@
         }
     }
 }
-.scrollbar {
+.menuMobile-scrollbar {
     overflow: hidden;
+    position: fixed;
+    left: 0;
+    right: 0;
 }
 
 @include breakpoint-xxl {
@@ -329,7 +332,7 @@
     }
     .header-menu {
         display: none;
-        position: absolute;
+        position: fixed;
         top: 0;
         bottom: 0;
         left: 0;
