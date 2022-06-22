@@ -60,13 +60,13 @@ A lógica para adicionar o produto ao carrinho é bem simples. Ao clicar no bot�
 
 Assim como as informações do produto na página são adicionadas ao carrinho ao clicar no botão de adicionar, também adiciono-as ao localStorage. Desta forma, ao carregar a página sempre executo uma função que adiciona as informações salvas no localStorage, caso houver, no carrinho de compras.
 
-![Produto sendo armazenado no localStorage](https://user-images.githubusercontent.com/72027449/175071365-ce226f62-84d3-4995-90dc-a965166bba8f.gif)
+https://user-images.githubusercontent.com/72027449/175075457-74775bb0-f375-4561-b649-fab3defa10f6.mp4
 
 #### Mensagem de erro
 
 Sempre que o usuário deixa de selecionar uma quantidade do produto ou especifique o número 0 eu exibo uma mensagem de erro que só é oculta ao especificar um número diferente de 0 ou quando o usuário tira o foco do campo de entrada.
 
-![Mensagem de erro sendo exibida quando necessário](https://user-images.githubusercontent.com/72027449/175071522-ed8c1877-5568-4d7a-aff1-73ada7665f8e.gif)
+https://user-images.githubusercontent.com/72027449/175075516-100def45-92cb-436f-ab87-4ee95b461cae.mp4
 
 #### Clique fora
 
@@ -82,7 +82,7 @@ A função adiciona um atributo do tipo data ao elementos setados e um evento de
 
 Dessa forma, como mostrado no código acima, o carrinho de compras é fechado ao clicar em qualquer elemento que não seja ele mesmo ou caso o usuário esteja selecionando uma nova quantidade do produto.
 
-![Mostrando como a função de clique fora se comporta](https://user-images.githubusercontent.com/72027449/175071632-ad1bcd0e-290f-4320-992d-eee7750c9952.gif)
+https://user-images.githubusercontent.com/72027449/175075599-a4b58f18-fd48-4ca3-a119-e1f5a7590ed5.mp4
 
 
 #### Não permitir rolagem em ocasiões específicas
