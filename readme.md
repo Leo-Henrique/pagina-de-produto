@@ -29,7 +29,7 @@ Este é um desafio considerado nível intermediário pela plataforma, ótimo par
 
 ### ✅ Status
 
-Projeto: Finalizado.
+Finalizado.
 
 ### 🏁 O desafio
 
@@ -56,7 +56,7 @@ Para a resolução deste desafio, os usuários devem ser capazes de:
 
 ### 💡 Aprendizados e melhorias
 
-Apesar de ter sido a primeira vez de ter feito uma funcionalidade de adicionar ao carrinho com JavaScript, todas as funcionalidades citadas abaixo (com exceção da *adicionar ao carrinho*) são melhorias que não foram requeridas pelo desafio e não eram necessariamente essencial.
+Apesar de ter sido a primeira vez de ter feito uma funcionalidade de adicionar ao carrinho com JavaScript, todas as funcionalidades citadas abaixo (com exceção da **adicionar ao carrinho**) são melhorias que não foram requeridas pelo desafio e não eram necessariamente essencial.
 
 #### Carinho
 
