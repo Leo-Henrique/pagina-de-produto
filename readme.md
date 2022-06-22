@@ -82,7 +82,7 @@ A função adiciona um atributo do tipo data ao elementos setados e um evento de
 
 Dessa forma, como mostrado no código acima, o carrinho de compras é fechado ao clicar em qualquer elemento que não seja ele mesmo ou caso o usuário esteja selecionando uma nova quantidade do produto.
 
-https://user-images.githubusercontent.com/72027449/175075599-a4b58f18-fd48-4ca3-a119-e1f5a7590ed5.mp4
+![click-outside](https://user-images.githubusercontent.com/72027449/175076676-638332e4-84bc-445d-9f26-0fbbbe981bb7.gif)
 
 
 #### Não permitir rolagem em ocasiões específicas
