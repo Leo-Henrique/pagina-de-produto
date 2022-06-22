@@ -35,7 +35,7 @@ export default function modal() {
             }, 20);
             setTimeout(() => {
                 modal.removeAttribute("data-transition", "");
-                clickOutside([modalBody.parentElement], closeModal);
+                clickOutside([modalBody.parentElement, btnClose], closeModal);
                 document.addEventListener("keydown", closeModalKey);
             }, 300);
         }

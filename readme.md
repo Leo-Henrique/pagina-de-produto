@@ -13,10 +13,14 @@ Este desafio pelo Frontend Mentor com ênfase em JavaScript consistia em simular
 * [Desenvolvimento](#%EF%B8%8F-desenvolvimento)
     * [Tecnologias utilizadas](#-tecnologias-utilizadas)
     * [Aprendizados e melhorias](#-aprendizados-e-melhorias)
-        * [Adicionar ao carrinho](#adicionar-ao-carrinho)
-        * [Produto armazenado no localStorage](#produto-armazenado-no-localStorage)
-        * [Mensagem de erro](#mensagem-de-erro)
-        * [Clique fora](#clique-fora)
+        * [Carrinho de compras](#carrinho-de-compras)
+            * [Adicionar ao carrinho](#adicionar-ao-carrinho)
+            * [Produto armazenado no localStorage](#produto-armazenado-no-localStorage)
+            * [Mensagem de erro](#mensagem-de-erro)
+            * [Clique fora](#clique-fora)
+        * [Lightbox](#lightbox)
+            * [Conteúdo clonado](#conteúdo-clonado)
+            * [Altura responsiva](#altura-responsiva)
         * [Não permitir rolagem em ocasiões específicas](#Não-permitir-rolagem-em-ocasiões-específicas)
 
 ## 🔎 Visão geral
@@ -50,25 +54,27 @@ Para a resolução deste desafio, os usuários devem ser capazes de:
 
 ### 💡 Aprendizados e melhorias
 
-Apesar de ter sido a primeira vez de ter feito uma funcionalidade de adicionar ao carrinho com JavaScript, todas as outras funcionalidades citadas abaixo são melhorias que não foram requeridas pelo desafio.
+Apesar de ter sido a primeira vez de ter feito uma funcionalidade de adicionar ao carrinho com JavaScript, todas as funcionalidades citadas abaixo (com exceção da *adicionar ao carrinho*) são melhorias que não foram requeridas pelo desafio e não eram necessariamente essencial.
 
-#### Adicionar ao carrinho
+#### Carinho
+
+##### Adicionar ao carrinho
 
 A lógica para adicionar o produto ao carrinho é bem simples. Ao clicar no botão de adicionar, capturo as informações do produto que já estão na página, como o título, preço e a quantidade selecionada pelo usuário e coloco essas mesmas informações no carrinho de compras, removendo a classe que estiliza o carrinho quando ele está vazio e adicionando uma classe que estiliza para quando ele está cheio.
 
-#### Produto armazenado no localStorage
+##### Produto armazenado no localStorage
 
 Assim como as informações do produto na página são adicionadas ao carrinho ao clicar no botão de adicionar, também adiciono-as ao localStorage. Desta forma, ao carregar a página sempre executo uma função que adiciona as informações salvas no localStorage, caso houver, no carrinho de compras.
 
 https://user-images.githubusercontent.com/72027449/175075457-74775bb0-f375-4561-b649-fab3defa10f6.mp4
 
-#### Mensagem de erro
+##### Mensagem de erro
 
 Sempre que o usuário deixa de selecionar uma quantidade do produto ou especifique o número 0 eu exibo uma mensagem de erro que só é oculta ao especificar um número diferente de 0 ou quando o usuário tira o foco do campo de entrada.
 
 https://user-images.githubusercontent.com/72027449/175075516-100def45-92cb-436f-ab87-4ee95b461cae.mp4
 
-#### Clique fora
+##### Clique fora
 
 Criei uma função no JavaScript que sempre executo para elementos que são abertos com algum evento – como um menu mobile ou menu dropdown –, com o objetivo de fechar este elemento ao clicar fora dele.
 
@@ -82,8 +88,23 @@ A função adiciona um atributo do tipo data ao elementos setados e um evento de
 
 Dessa forma, como mostrado no código acima, o carrinho de compras é fechado ao clicar em qualquer elemento que não seja ele mesmo ou caso o usuário esteja selecionando uma nova quantidade do produto.
 
-https://user-images.githubusercontent.com/72027449/175075599-a4b58f18-fd48-4ca3-a119-e1f5a7590ed5.mp4
+https://user-images.githubusercontent.com/72027449/175115747-c0e0bfe5-6541-4b0c-8da9-a7c89e89ebc7.mp4
 
+#### Lightbox
+
+##### Conteúdo clonado
+
+Como o conteúdo exibido ao abrir o lightbox clicando na imagem principal é o mesmo do que o que já está na página, faço uma clonagem do conteúdo e adiciono ao lightbox, apenas especificando um CSS diferente para as duas ocasiões.
+
+https://user-images.githubusercontent.com/72027449/175115814-ba06010c-0976-4a9d-8946-7fec69d4dc62.mp4
+
+##### Altura responsiva
+
+Para o conteúdo do lightbox ficar bem apresentado em tela cheia, todos os elementos internos possuem `height: 100%` para uma responsividade adequada.
+
+Como a imagem principal do lightbox é acompanhada de outros elementos ao redor, como o botão de fechar o lightbox e a navegação para fazer a troca das imagens, posiciono eles com `position: absolute` e aplico um script que pega a altura desses elementos para subtrair no `height: 100%` da imagem principal. Quando os elementos chegam em sua altura máxima, deixo de aplicar o `height` na imagem principal e aplico uma classe ao lightbox que centraliza os elementos verticalmente.
+
+https://user-images.githubusercontent.com/72027449/175116391-7fc655f0-781a-4ebb-9f54-647415f8da03.mp4
 
 #### Não permitir rolagem em ocasiões específicas
 
