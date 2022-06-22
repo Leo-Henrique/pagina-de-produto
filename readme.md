@@ -1,6 +1,8 @@
 # Desafio do Frontend Mentor | Página de produto de e-commerce
 
-Este desafio pelo Frontend Mentor com ênfase em JavaScript consistia em simular uma página de produto de uma loja virtual, contendo as principais funcionalidades que uma página de produto teria (como adicionar ou remover produtos de um carrinho de compras). Este é um desafio considerado nível intermediário pela plataforma, ótimo para praticar a manipulação do DOM e usar os principais conceitos de JavaScript.
+Este desafio pelo Frontend Mentor com ênfase em JavaScript consistia em simular uma página de produto de uma loja virtual, contendo as principais funcionalidades que uma página de produto teria (como adicionar ou remover produtos de um carrinho de compras). 
+
+Este é um desafio considerado nível intermediário pela plataforma, ótimo para praticar a manipulação do DOM e usar os principais conceitos de JavaScript.
 
 ![Captura de tela do projeto](https://user-images.githubusercontent.com/72027449/175047749-4265a5cd-80a0-4f29-9f21-8e78e21ec4a5.png)
 
