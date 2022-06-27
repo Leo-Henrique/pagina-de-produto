@@ -1,62 +1,44 @@
+import {setChangeImg, setChangeNav} from "./tabs.js";
+
 export default function imageArrows() {
     const elementActive = document.querySelector("[data-imgActive]");
+    const btnsNav = elementActive.querySelectorAll(".tab-nav button");
+    const imgs = elementActive.querySelectorAll(".tab-content li");
     const prev = elementActive.querySelector(".product-img-current .prev button");
     const next = elementActive.querySelector(".product-img-current .next button");
-    const imgCurrent = elementActive.querySelector(".product-img-current img");
 
-    function handleChange(condition, exprTrue, exprFalse) {
-        if (!imgCurrent.hasAttribute("data-transition")) {
-            const imgSrc = imgCurrent.dataset.src;
-            const changeSrc = (change) => imgSrc.replace("number", change);
-            const navBtns = elementActive.querySelectorAll(".product-img-nav button");
-    
+    function handleChange(img, handleFirstOrLastElement, exprTrue, exprFalse) {
+        if (img.classList.contains("display") && !img.hasAttribute("data-transition")) {
             function setChange(change) {
-                imgCurrent.setAttribute("data-transition", "");
-                imgCurrent.classList.add("change-arrows");
-                setTimeout(() => {
-                    imgCurrent.setAttribute("src", changeSrc(change));
-                    imgCurrent.setAttribute("data-current", change);
+                const btnNavId = change.getAttribute("aria-labelledby");
 
-                    navBtns.forEach((btn, index) => {
-                        btn.classList.remove("active");
-                        if (index + 1 === change) {
-                            btn.classList.add("active");
-                        }
-                    });
-    
-                    imgCurrent.classList.remove("change-arrows");
-                }, 300);
-                setTimeout(() => {
-                    imgCurrent.removeAttribute("data-transition", "");
-                }, 600)
+                btnsNav.forEach(btn => {
+                    if (btn.id === btnNavId) 
+                        setChangeNav(btnsNav, btn);
+                });
+                setChangeImg(imgs, change);
             }
-    
-            condition ? setChange(exprTrue) : setChange(exprFalse);
+            handleFirstOrLastElement ? setChange(exprTrue) : setChange(exprFalse);
         }
     }
 
-    [next, prev].forEach((btn) => {
-        function handleArrows() {
-            const imgNumber = +imgCurrent.dataset.current;
-            const totalImages = elementActive.querySelectorAll(".product-img-nav button").length;
-            const parent = btn.parentElement;
+    prev.addEventListener("click", () => {
+        imgs.forEach((img, index, imgsArray) => {
+            const notTheFirstElement = index + 1 !== 1;
+            const exprTrue = img.previousElementSibling;
+            const exprFalse = imgsArray[imgsArray.length - 1];
 
-            if (parent.classList.contains("prev")) {
-                const condition = imgNumber !== 1;
-                const exprTrue = imgNumber - 1;
-                const exprFalse = totalImages;
+            handleChange(img, notTheFirstElement, exprTrue, exprFalse);
+        });
+    });
+    next.addEventListener("click", () => {
+        imgs.forEach((img, index, imgsArray) => {
+            const notTheLastElement = index + 1 !== imgsArray.length;
+            const exprTrue = img.nextElementSibling;
+            const exprFalse = imgsArray[0];
 
-                handleChange(condition, exprTrue, exprFalse);
-    
-            } else if (parent.classList.contains("next")) {
-                const condition = imgNumber !== totalImages;
-                const exprTrue = imgNumber + 1;
-                const exprFalse = totalImages - totalImages + 1;
-
-                handleChange(condition, exprTrue, exprFalse);
-            }
-        }
-        btn.addEventListener("click", handleArrows);
+            handleChange(img, notTheLastElement, exprTrue, exprFalse);
+        });
     });
 }
 imageArrows();

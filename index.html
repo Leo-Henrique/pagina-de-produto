@@ -191,14 +191,48 @@
                         </button>
                     </div>
 
-                    <button class="btn-img-current"
-                    type="button"
-                    data-modalOpen="modalLightBox">
-                        <img src="images/image-product-1.jpg" 
-                        alt="Foto do tênis"
-                        data-src="images/image-product-number.jpg"
-                        data-current="1" />
-                    </button>
+                    <ul class="tab-content">
+                        <li class="display show" 
+                        id="product-image-1-tab-pane"
+                        aria-labelledby="product-image-1-tab"
+                        role="tabpanel">
+                            <button type="button"
+                            data-modalOpen="modalLightBox">
+                                <img src="images/image-product-1.jpg" 
+                                alt="Primeira foto do tênis" />
+                            </button>
+                        </li>
+
+                        <li id="product-image-2-tab-pane"
+                        aria-labelledby="product-image-2-tab"
+                        role="tabpanel">
+                            <button type="button"
+                            data-modalOpen="modalLightBox">
+                                <img src="images/image-product-2.jpg" 
+                                alt="Segunda foto do tênis" />
+                            </button>
+                        </li>
+
+                        <li id="product-image-3-tab-pane"
+                        aria-labelledby="product-image-3-tab"
+                        role="tabpanel">
+                            <button type="button"
+                            data-modalOpen="modalLightBox">
+                                <img src="images/image-product-3.jpg" 
+                                alt="Terceira foto do tênis" />
+                            </button>
+                        </li>
+
+                        <li id="product-image-4-tab-pane"
+                        aria-labelledby="product-image-4-tab"
+                        role="tabpanel">
+                            <button type="button"
+                            data-modalOpen="modalLightBox">
+                                <img src="images/image-product-4.jpg" 
+                                alt="Quarta foto do tênis" />
+                            </button>
+                        </li>
+                    </ul>
 
                     <div class="arrows next">
                         <button type="button"
@@ -211,31 +245,48 @@
                 </div>
 
                 <nav class="product-img-nav">
-                    <ul>
-                        <li>
+                    <ul class="tab-nav"
+                    role="tablist">
+                        <li role="presentation">
                             <button class="active"
-                            type="button">
+                            type="button"
+                            role="tab"
+                            aria-controls="product-image-1-tab-pane"
+                            id="product-image-1-tab"
+                            aria-selected="true">
                                 <img src="images/image-product-1-thumbnail.jpg" 
                                 alt="Miniatura da primeira foto do tênis" />
                             </button>
                         </li>
 
-                        <li>
-                            <button type="button">
+                        <li role="presentation">
+                            <button type="button"
+                            role="tab"
+                            aria-controls="product-image-2-tab-pane"
+                            id="product-image-2-tab"
+                            aria-selected="false">
                                 <img src="images/image-product-2-thumbnail.jpg" 
                                 alt="Miniatura da segunda foto do tênis" />
                             </button>
                         </li>
 
-                        <li>
-                            <button type="button">
+                        <li role="presentation">
+                            <button type="button"
+                            role="tab"
+                            aria-controls="product-image-3-tab-pane"
+                            id="product-image-3-tab"
+                            aria-selected="false">
                                 <img src="images/image-product-3-thumbnail.jpg" 
                                 alt="Miniatura da terceira foto do tênis" />
                             </button>
                         </li>
 
-                        <li>
-                            <button type="button">
+                        <li role="presentation">
+                            <button type="button"
+                            role="tab"
+                            aria-controls="product-image-4-tab-pane"
+                            id="product-image-4-tab"
+                            aria-selected="false">
                                 <img src="images/image-product-4-thumbnail.jpg" 
                                 alt="Miniatura da quarta foto do tênis" />
                             </button>

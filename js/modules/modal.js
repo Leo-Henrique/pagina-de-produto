@@ -1,12 +1,12 @@
 import imageArrows from "./image-arrows.js";
-import tabsNav from "./tabs-nav.js";
+import tabs from "./tabs.js";
 import clickOutside from "./click-outside.js";
 
 export default function modal() {
-    const btnOpen = document.querySelector("[data-modalOpen]");
+    const btnOpen = document.querySelectorAll("[data-modalOpen]");
     const btnClose = document.querySelector("[data-modalClose]");
     const modal = document.getElementById("modalLightBox");
-    const content = btnOpen.parentElement.parentElement;
+    const content = document.querySelector(".product-img");
     let contentClone;
 
     function openModal() {
@@ -25,7 +25,7 @@ export default function modal() {
             document.body.classList.add("modal-scrollbar");
 
             imageArrows();
-            tabsNav();
+            tabs();
             responsiveDialog();
             
             setTimeout(() => {
@@ -40,7 +40,7 @@ export default function modal() {
             }, 300);
         }
     }
-    btnOpen.addEventListener("click", openModal);
+    btnOpen.forEach((btn) => btn.addEventListener("click", openModal));
 
     function closeModal() {
         if (!modal.hasAttribute("data-transition")) {

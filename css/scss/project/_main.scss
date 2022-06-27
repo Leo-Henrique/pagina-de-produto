@@ -54,34 +54,38 @@
         .arrows.next {
             right: 15px;
         }
-        .btn-img-current {
-            display: block;
-            cursor: pointer;
-            outline: none;
+        .tab-content li {
+            display: none;
+            opacity: 0;
+            transform: translate3D(-15px, 0, 0);
+            transition-property: opacity, transform;
+            transition-duration: 300ms;
+            transition-timing-function: ease-in-out;
 
-            @include desktop-supported {
-                &:hover img {
+            button {
+                outline: none;
+                cursor: pointer;
+                transition: opacity 300ms ease-in-out;
+
+                @include desktop-supported {
+                    &:hover {
+                        opacity: 0.6;
+                    }
+                }
+                &:active {
                     opacity: 0.6;
                 }
             }
-            &:active img {
-                opacity: 0.6;
-            }
             img {
                 border-radius: 20px;
-                transition-property: opacity, transform;
-                transition-duration: 300ms;
-                transition-timing-function: ease-in-out;
-                opacity: 1;
-                transform: none;
             }
-            img.change {
-                opacity: 0;
-                transform: translate3D(-15px, 0, 0);
-            }
-            img.change-arrows {
-                opacity: 0;
-            }
+        }
+        .tab-content li.display {
+            display: block;
+        }
+        .tab-content li.show {
+            opacity: 1;
+            transform: none;
         }
     }
     &-nav ul {
@@ -350,14 +354,17 @@
             .arrows {
                 display: flex;
             }
-            .btn-img-current {
+            .tab-content li {
+                transform: none;
+            }
+            .tab-content li button {
                 width: 100%;
-                img {
-                    object-fit: cover;
-                    width: 100%;
-                    height: 450px;
-                    border-radius: 0;
-                }
+            }
+            .tab-content li img {
+                object-fit: cover;
+                width: 100%;
+                height: 450px;
+                border-radius: 0;
             }
         }
         &-nav ul {
@@ -408,7 +415,7 @@
 }
 
 @include breakpoint-md {
-    .product-img-current .btn-img-current img {
+    .product-img-current .tab-content li img {
         height: 370px;
     }
 }
@@ -421,7 +428,7 @@
         width: 40px;
         height: 40px;
     }
-    .product-img-current .btn-img-current img {
+    .product-img-current  .tab-content li img {
         height: 300px;
     }
     .product-texts {
