@@ -24,7 +24,7 @@ export function setChangeImg(imgs, img) {
         item.classList.remove("show");
 
         setTimeout(() => item.classList.remove("display"), 300);
-        setTimeout(() => item.removeAttribute("data-transition"), 620);
+        setTimeout(() => item.removeAttribute("data-transition"), 640);
     });
     setTimeout(() => img.classList.add("display"), 300);
     setTimeout(() => img.classList.add("show"), 320);
