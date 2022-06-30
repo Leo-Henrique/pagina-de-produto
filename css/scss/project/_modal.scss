@@ -40,6 +40,7 @@
             padding-right: 0;
 
             path {
+                transition: fill 300ms ease-in-out;
                 fill: $support-light-1;
             }
             @include desktop-supported {
