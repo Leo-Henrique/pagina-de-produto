@@ -34,15 +34,15 @@ export default function modal() {
                 window.addEventListener("resize", responsiveDialog);
             }, 20);
             setTimeout(() => {
-                let elementsClickOutside = [];
-                const imgs = contentClone.querySelectorAll(".tab-content img");
-                const arrows = contentClone.querySelectorAll(".arrows button");
+                const imgs = Array.from(contentClone.querySelectorAll(".tab-content img"));
+                const arrows = Array.from(contentClone.querySelectorAll(".arrows button"));
                 const nav = modal.querySelector(".product-img-nav");
-                imgs.forEach(img => elementsClickOutside.push(img));
-                arrows.forEach(arrow => elementsClickOutside.push(arrow));
-                elementsClickOutside.push(nav, btnClose)
-
-                clickOutside(elementsClickOutside, closeModal);
+                clickOutside([
+                    imgs, 
+                    arrows, 
+                    nav, 
+                    btnClose
+                ], closeModal);
 
                 modal.removeAttribute("data-transition", "");
                 document.addEventListener("keydown", closeModalKey);

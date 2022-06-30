@@ -1,25 +1,32 @@
-export default function clickOutside(elements, callback) {
+export default function clickOutside(parents, callback) {
     const attr = "data-clickOutside";
 
-    function handleAttribute() {
-        elements.forEach((element) => {
-            const children = element.querySelectorAll("*");
+    function handleElements() {
+        function handleAttribute(parent) {
+            const children = parent.querySelectorAll("*");
 
-            if (!element.hasAttribute(attr)) {
-                element.setAttribute(attr, "");
+            if (!parent.hasAttribute(attr)) {
+                parent.setAttribute(attr, "");
                 children.forEach((child) => child.setAttribute(attr, ""));
             } else {
-                element.removeAttribute(attr, "");
+                parent.removeAttribute(attr, "");
                 children.forEach((child) => child.removeAttribute(attr, ""));
             }
+        }
+
+        parents.forEach((parent) => {
+            if (Array.isArray(parent)) 
+                parent.forEach(element => handleAttribute(element));
+            else 
+                handleAttribute(parent); 
         });
     }
-    handleAttribute();
+    handleElements();
 
     function handleOutsideClick(e) {
         if (!e.target.hasAttribute(attr)) {
             callback();
-            handleAttribute();
+            handleElements();
             document.removeEventListener("click", handleOutsideClick);
         }
     }
